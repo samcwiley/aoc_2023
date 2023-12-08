@@ -44,10 +44,10 @@ else
 #![allow(unused_variables, dead_code, unused_imports)]
 
 fn main() {
-    let input = include_str!("../.inputs/input1.txt");
+    let input = include_str!("../.inputs/input$file_num.txt");
     let data = parse_input(input);
     //let part1 = part1(data);
-    //dbg!(part);
+    //dbg!(part1);
 }
 
 fn parse_input(input: &str) -> Vec<&str> {
@@ -76,7 +76,7 @@ mod tests {
         assert_eq!(result, ex_answer);
         /*let ex_answer2 = "";
         let result2 = part2(ex_data);
-        assert_eq!(part2(ex_data), ex_answer);
+        assert_eq!(result2, ex_answer2);
         */
     }
 }

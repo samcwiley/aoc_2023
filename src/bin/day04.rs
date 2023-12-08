@@ -15,6 +15,18 @@ fn get_score(matches: u32) -> u32 {
     }
 }
 
+fn part2(matches: Vec<u32>) -> u32 {
+    let mut cards: Vec<u32> = vec![1; matches.len()];
+    cards.insert(0, 0);
+    for (index, num_matches) in matches.iter().enumerate() {
+        let card_num = index + 1;
+        for i in (card_num + 1)..=(card_num + *num_matches as usize) {
+            cards[i] += cards[card_num];
+        }
+    }
+    cards.iter().sum()
+}
+
 fn main() {
     let matches: Vec<u32> = read_lines("../inputs/input04.txt")
         .unwrap()
@@ -34,31 +46,12 @@ fn main() {
                 .filter(|num| my_nums.contains(num))
                 .collect::<Vec<_>>()
                 .len() as u32;
-            //let score = get_score(matches);
-            //score
             matches
         })
         .collect();
     let part1: u32 = matches.iter().map(|matches| get_score(*matches)).sum();
     let part2 = part2(matches);
     println!("{}\n{}", part1, part2);
-    //let test: Vec<u32> = vec![4, 2, 2, 1, 0, 0];
-    //let test_answer = part2(test);
-    //println!("{}", test_answer)
-}
-
-fn part2(matches: Vec<u32>) -> u32 {
-    let mut cards: Vec<u32> = vec![1; matches.len()];
-    cards.insert(0, 0);
-    //let mut cards: HashMap<u8, u32> = HashMap::new();
-
-    for (index, num_matches) in matches.iter().enumerate() {
-        let card_num = index + 1;
-        for i in (card_num + 1)..=(card_num + *num_matches as usize) {
-            cards[i] += cards[card_num];
-        }
-    }
-    cards.iter().sum()
 }
 
 fn read_lines<P>(path: P) -> io::Result<io::Lines<io::BufReader<File>>>
