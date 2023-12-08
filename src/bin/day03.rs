@@ -7,6 +7,8 @@ use std::io::BufRead;
 use std::iter::Map;
 use std::path::Path;
 
+const X: i32 = 1 + 2 + 3;
+
 #[derive(Debug)]
 struct Num {
     value: u32,
