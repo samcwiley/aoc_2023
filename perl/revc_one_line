@@ -1,0 +1,1 @@
+perl -0777 -pe 'tr/ACGT/TGCA/; chomp; printf reverse $_;' rosalind_revc.txt > rosalind_REVC_answer.txt
